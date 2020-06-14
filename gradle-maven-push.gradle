@@ -39,11 +39,11 @@ def getSnapshotRepositoryUrl() {
 }
 
 def getRepositoryUsername() {
-    return findProperty('NEXUS_USERNAME') ?: ""
+    return findProperty('SONATYPE_NEXUS_USERNAME') ?: System.getenv('SONATYPE_NEXUS_USERNAME')
 }
 
 def getRepositoryPassword() {
-    return findProperty('NEXUS_PASSWORD') ?: ""
+    return findProperty('SONATYPE_NEXUS_PASSWORD') ?: System.getenv('SONATYPE_NEXUS_PASSWORD')
 }
 
 def configurePom(pom) {
