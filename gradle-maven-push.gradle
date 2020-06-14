@@ -115,6 +115,9 @@ afterEvaluate {
     }
 
     signing {
+        def signingKey = findProperty("signingKey") ?: System.getenv('GPG_SIGNING_KEY')
+        def signingPassword = findProperty("signingPassword") ?: System.getenv('GPG_SIGNING_PASSWORD')
+        useInMemoryPgpKeys(signingKey, signingPassword)
         publishing.publications.all { publication ->
             sign publication
         }
