@@ -15,7 +15,7 @@
  */
 
 apply plugin: 'maven-publish'
-//apply plugin: 'signing'
+apply plugin: 'signing'
 
 version = VERSION_NAME
 group = GROUP
@@ -110,16 +110,16 @@ afterEvaluate {
         }
     }
 
-    /*tasks.withType(Sign) {
+    tasks.withType(Sign) {
         onlyIf { isReleaseBuild() || isSnapshotSignEnabled() }
     }
 
     signing {
-        useInMemoryPgpKeys(findProperty('signingKey'), findProperty('signingPassword'))
+        useInMemoryPgpKeys(findProperty('SIGNING_KEY'), findProperty('SIGNING_PASSWORD'))
         publishing.publications.all { publication ->
             sign publication
         }
-    }*/
+    }
 
     javadoc {
         if (JavaVersion.current().isJava9Compatible()) {
